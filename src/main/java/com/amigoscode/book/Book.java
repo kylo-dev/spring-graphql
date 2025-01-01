@@ -1,4 +1,4 @@
-package com.amigoscode;
+package com.amigoscode.book;
 
 import java.util.Arrays;
 import java.util.List;

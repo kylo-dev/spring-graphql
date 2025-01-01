@@ -1,5 +1,6 @@
-package com.amigoscode;
+package com.amigoscode.book;
 
+import com.amigoscode.author.Author;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.graphql.data.method.annotation.Argument;

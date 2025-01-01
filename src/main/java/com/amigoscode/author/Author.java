@@ -1,4 +1,4 @@
-package com.amigoscode;
+package com.amigoscode.author;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,5 +16,9 @@ public record Author(Long id, String name) {
     return authors.stream()
         .filter(a -> a.id.equals(id))
         .findFirst();
+  }
+
+  public static Author entityToModel(AuthorEntity entity) {
+    return new Author(entity.getId(), entity.getName());
   }
 }
