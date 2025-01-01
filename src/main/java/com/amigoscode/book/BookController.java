@@ -1,11 +1,14 @@
 package com.amigoscode.book;
 
 import com.amigoscode.author.Author;
+import com.amigoscode.exception.GraphqlErrorType;
+import com.amigoscode.exception.GraphqlException;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 
 @Controller
@@ -24,6 +27,11 @@ public class BookController {
    */
   @QueryMapping
   public Optional<Book> bookById(@Argument Long id) {
+
+    if (id == 0) {
+      throw new GraphqlException("올바른 id가 아닙니다.", HttpStatus.BAD_REQUEST.value(), GraphqlErrorType.BAD_REQUEST);
+    }
+
     return Book.getBookById(id);
   }
 
